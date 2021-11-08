@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+      integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="Home.css" />
+    <title>Home</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+    <link rel="stylesheet" href="Home.css" />
+    <script>
+      const HomePageID = "<%= homeId %>";
+    </script>
+  </head>
+  <body>
+    <div class="homePage">
+      <nav class="homePage__navbar">
+        <div class="homePage__navbarLeft">
+          <img
+            src="https://seeklogo.com/images/M/meteor-logo-513B96BFB2-seeklogo.com.png"
+            alt=""
+          />
+          <h1>Meeeteor</h1>
+        </div>
+      </nav>
+      <div class="homePage__body">
+        <div class="homePage__bodyLeft">
+          <h1>
+            La visioconférence haute qualité, maintenant disponible pour tous
+          </h1>
+          <p>
+            Nous avons adapté Meeteor, notre service de visioconférence
+            proffesionel sécurisé, afin de le rendre disponible pour tous.
+          </p>
+          <form action="">
+            <button class="redBtn">
+              <span class="material-icons"> video_call </span>
+
+              <p>Nouvelle réunion</p>
+            </button>
+            <span class="meetUrl">
+              <i class="fa-solid fa-keyboard"></i>
+              <input type="text" placeholder="Saisir un code ou un lien..." />
+            </span>
+
+            <button style="color: crimson">Participer</button>
+          </form>
+          <div class="horizontalLine"></div>
+        </div>
+        <div class="homePage__bodyRight">
+          <div class="slider">
+            <!-- <button>
+              <i class="fas fa-chevron-left"></i>
+            </button> -->
+            <img
+              src="https://www.cmu.edu/tepper/news/stories/2021/assets/images/video-conference-research.jpg"
+              alt=""
+            />
+            <!-- <button>
+              <i class="fas fa-chevron-right"></i>
+            </button> -->
+          </div>
+          <h2>Obtenir un lien de partage</h2>
+          <p>
+            Cliquez sur <strong>Nouvelle réunion</strong> pour obtenir le lien a
+            envoyer aux personnes que vous souhaitez inviter a une réunion.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-dark">
+      <footer>
+        <div class="Container">
+          <div class="row">
+            <div class="col-sm-6 col-md-3 item">
+              <h2>Services</h2>
+              <ul>
+                <li><a href="#">Online Meetings</a></li>
+                <li><a href="#">Online Courses</a></li>
+                <li><a href="#">Video conferencing</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-6 col-md-3 item">
+              <h2>About</h2>
+              <ul>
+                <li><a href="#">Company</a></li>
+                <li><a href="#">Team</a></li>
+                <li><a href="#">Careers</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6 item text">
+              <h2>Meeeteor</h2>
+              <p>
+                Praesent sed lobortis mi. Suspendisse vel placerat ligula.
+                Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis
+                tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel
+                in justo.
+              </p>
+            </div>
+          </div>
+          <div class="col item social">
+            <a href="#"><i class="fab fa-facebook"></i></a
+            ><a href="#"><i class="fab fa-twitter"></i></a
+            ><a href="#"><i class="fab fa-snapchat"></i></a
+            ><a href="#"><i class="fab fa-instagram"></i> </a>
+          </div>
+          <p class="copyright">Meeteor © 2021</p>
+        </div>
+      </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
