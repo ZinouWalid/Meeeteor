@@ -57,55 +57,89 @@
     
       <div class="options">
       
-          <div class="options__button">
+          <!-- <div class="options__button"> -->
             <!-- 
-              
               <button type="button" id="downloadButton">
                 <span class="material-icons">
                   upload_file
                 </span>
               </button> -->
-              <button id="recordButton" type="button" >
+              <!-- <button id="recordButton" type="button" >
               <span class="material-icons">radio_button_checked
                 </span>
-            </button>
-            <div class="record-Card hide-Card">
+            </button> -->
+            <!-- <div class="record-Card hide-Card"> -->
 
-              <div class="container mt-3">
-                <span><a id="download" style="display: none;"><button type="button" class="btn btn-primary mb-4"> Download</button></a></span>
-                <button type="button" class="btn btn-danger" id="stop" disabled>Stop</button>
-                <button type="button" onclick="recordAudio()" class="btn btn-info">Record Audio</button>
-                <button type="button" onclick="recordVideo()" class="btn btn-info">Record Video</button>
-                <button type="button" onclick="recordScreen()" class="btn btn-info">Record Screen</button>
-                  <div class="p-5">
+              <!-- <div class="container mt-3"> -->
+                
+                 <!-- <button type="button" onclick="recordAudio()" class="btn btn-info">Record Audio</button>
+                <button type="button" onclick="recordVideo()" class="btn btn-info">Record Video</button> -->
+                  <!-- <div class="p-5">
                     <video autoplay height='480' width="640" muted id="video"></video>
-                  </div>
+                  </div> -->
+              <!-- </div> -->
+              <!-- </div> -->
+              
+
+        <div class="option_left">
+            <div class="options__button">
+              <button title="stop recording" type="button" class="btn btn-danger" id="stop" disabled>Stop</button>
             </div>
-          </div>
-            <button id="stopVideo" >
+          
+            <div class="options__button"> 
+              <button title="record" type="button" onclick="recordScreen()" class="btn btn-info"><i class="fas fa-record-vinyl"></i></button>
+            </div>
+            
+        </div>
+               
+           
+         <div class="option_middle">
+           
+          <div class="options__button">
+            <button title="Activate/Disactivate camera" id="stopVideo" >
               <i class="fa fa-video-camera"></i>
             </button>
           </div>
-          <div id="muteButton" class="options__button">
-            <button>
-              <i class="fa fa-microphone"></i>
-            </button>
+                  
+
+            <div id="muteButton" class="options__button">
+               <button title="Activate/Mute microphone"> 
+                 <i class="fa fa-microphone"></i>
+               </button>
+            </div>          
+        
+            <div class="options__button">
+               <button title="Present now" id="shareButton">
+                 <i class="fas fa-desktop"></i>          
+               </button>
+            </div>
+         </div>
+              
+          <div class="option_right">
+            
+            <div id="showChat" class="options__button">
+              <button>
+                 <i class="fa fa-comment"></i>
+              </button>
+            </div>
+
+            <span><a id="download" style="display: none;">
+              <div class="options__button ">
+                <button title="download" type="button" ><i class="fas fa-download"></i></button>
+              </div>
+              </a>
+            </span>
+
+            <div  class="options__button">
+              <button title="Leave the call" id="quitButton">
+                 <i class="fas fa-sign-out-alt"></i>
+              </button>
+            </div>
           </div>
-          <div id="showChat" class="options__button">
-            <button>
-              <i class="fa fa-comment"></i>
-            </button>
-          </div>
-          <div class="options__button">
-            <button id="shareButton">
-              <i class="fas fa-desktop"></i>          </div>
-            </button>
-          <div  class="options__button">
-            <button id="quitButton">
-              <i class="fas fa-sign-out-alt"></i>
-            </button>
-          </div>
-      </div>
+            
+      
+      
+        </div>
 
 
     </div>
@@ -120,7 +154,7 @@
       <div class="main__message_container">
         <input id="chat_message" type="text" autocomplete="off" placeholder="Type message here...">
         <div id="send" class="options__button">
-          <button>
+          <button title="Send now">
             <i class="fa fa-send" aria-hidden="true"></i>
           </button>
         </div>
