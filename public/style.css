@@ -1,0 +1,400 @@
+@import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Roboto:ital,wght@0,400;1,300&display=swap");
+
+:root {
+  --main-darklg: #0c2b42eb;
+  --main-dark: #4d5052;
+  --primary-color: crimson;
+  --main-light: #eeeeee;
+  --main-red: red;
+  --main-blue: rgb(45, 96, 173);
+  /*<i class="fas fa-share-square"></i>*/
+  font-family: "Poppins", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  margin-left: 0.4vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  position: relative;
+  width: 99vw;
+  background-color: var(--main-darklg);
+}
+.logo {
+  width: 100%;
+}
+
+#logo_name {
+  font-size: 2em;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+}
+#logo_name > img {
+  height: 40px;
+  object-fit: contain;
+  margin: auto 15px;
+}
+
+#LOGO {
+  color: linear-gradient(to left, red, blue);
+  transform: scale(0.95);
+  margin: 0em 0.7em;
+}
+
+#head_nav {
+  color: white;
+  display: grid;
+  grid-template-columns: 30% 50% 20%;
+  align-items: center;
+}
+
+#meeting_title {
+  text-align: center;
+}
+
+.logo > h3 {
+  color: var(--main-light);
+}
+
+.main {
+  /* overflow: hidden; */
+  height: 90vh;
+  display: flex;
+}
+
+.main__left {
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
+}
+
+.videos__group {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--main-dark);
+}
+
+.video_class {
+  height: 300px;
+  border-radius: 1rem;
+  margin: 0.5rem;
+  width: 400px;
+  object-fit: cover;
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+}
+
+.options {
+  position: relative;
+  padding: 1rem;
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: center;
+  background-color: var(--main-darklg);
+  background-image: linear-gradient(
+    to top,
+    var(--main-darklg),
+    var(--main-dark),
+    var(--main-dark)
+  );
+}
+
+.blue_btn {
+  background: linear-gradient(to top, blue, rgb(7, 170, 224));
+}
+.red_btn {
+  background: linear-gradient(to top, red, crimson);
+}
+.green_btn {
+  background: linear-gradient(to top, green, lightgreen);
+}
+
+.options__button > button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  color: var(--main-light);
+  font-size: 1rem;
+  width: 50px;
+  margin: 0 0.5rem;
+  border-radius: 100%;
+  border: none;
+  outline: none;
+}
+
+#quitButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  color: var(--main-light);
+  font-size: 1rem;
+  width: 50px;
+  margin: 0 0.5rem;
+  border-radius: 100%;
+  border: none;
+  outline: none;
+}
+
+.option_left {
+  display: flex;
+  justify-content: left;
+  width: 20%;
+}
+
+.option_middle {
+  display: flex;
+  justify-content: center;
+  width: 60%;
+}
+
+.option_right {
+  display: flex;
+  justify-content: right;
+  width: 20%;
+}
+
+#recordButton {
+  background-color: var(--main-red);
+  position: absolute;
+  left: 10px;
+}
+#downloadButton {
+  background-color: green;
+  position: absolute;
+  left: 150px;
+}
+#shareButton {
+  background-color: var(--main-blue);
+}
+.background__red {
+  background-color: #f6484a;
+}
+
+.main__right {
+  display: flex;
+  flex-direction: column;
+  flex: 0.2;
+  background-color: #043d69eb;
+}
+
+.main__chat_window {
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+.main__chat_window::-webkit-scrollbar {
+  display: none;
+}
+
+.main__message_container {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.main__message_container > input {
+  height: 50px;
+  flex: 1;
+  font-size: 1rem;
+  border-radius: 5px;
+  padding-left: 20px;
+  border: none;
+  outline: none;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+}
+
+.message > b {
+  color: #eeeeee;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.message > b > i {
+  margin-right: 0.7rem;
+  font-size: 1.5rem;
+}
+
+.message > span {
+  background-color: #eeeeee;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+#video-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#showChat {
+  display: none;
+}
+
+.header__back {
+  display: none;
+  position: absolute;
+  font-size: 1.3rem;
+  top: 17px;
+  left: 28px;
+  color: #fff;
+}
+/* .videos__group,
+.options */
+
+.main {
+  border-right: 2px white solid;
+  border-left: 2px white solid;
+  border-radius: 10px;
+}
+.main__right,
+.main__left,
+.header {
+  border: 2px white solid;
+  border-radius: 10px;
+}
+
+/**************************** NEWMEET STYLE ***********************************/
+
+.main_main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: linear-gradient(to bottom, #282d32, #0c2b42eb, #043d69eb);
+}
+
+/*
+}*/
+
+.email,
+.submit {
+  display: flex;
+  flex-direction: column;
+  margin: 1em 0em;
+}
+
+.email label {
+  font-size: 1.4em;
+}
+
+.email label .oblg {
+  color: red;
+}
+
+.email input {
+  font-size: 1em;
+  border-radius: 2em;
+  margin: 1em 0em 0.3em 0em;
+  padding: 0em 1em;
+  width: 50em;
+  height: 3em;
+  border: none;
+  outline: none;
+  background-color: #eee;
+}
+
+.submit {
+  background: linear-gradient(to left, crimson, red);
+  padding: 0.5rem 3rem;
+  color: rgb(6, 6, 49);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 1.5rem auto;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  transition: all ease-in 250ms;
+  width: 90%;
+}
+.submit:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+/*********************** END OF NEWMEET STYLING  *******************************/
+
+@media (max-width: 700px) {
+  .main__right {
+    display: none;
+  }
+  .main__left {
+    width: 100%;
+    flex: 1;
+  }
+
+  video {
+    height: auto;
+    width: 100%;
+  }
+
+  #showChat {
+    display: flex;
+  }
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+
+.recordCard {
+  z-index: 100;
+  background-color: white;
+  width: 50vw;
+  height: 30vh;
+}
+.hideCard {
+  display: none;
+}

@@ -1,0 +1,50 @@
+.video {
+  display: none;
+}
+
+.videoshare_hidden {
+  border: 1px solid #999;
+  width: 100%;
+  height: 50%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-dark);
+}
+
+.video_groupe_hidden {
+  display: none;
+}
+
+.stop_share {
+  display: none;
+}
+
+.stop_share_after {
+  display: 1;
+}
+
+.start {
+  display: 1;
+}
+
+.start_after {
+  display: none;
+}
+
+.error {
+  color: red;
+}
+
+.warn {
+  color: orange;
+}
+
+.info {
+  color: darkgreen;
+}
+
+#log {
+  display: none;
+}
