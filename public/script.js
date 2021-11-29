@@ -74,9 +74,12 @@ let text = document.querySelector("#chat_message");
 let send = document.getElementById("send");
 let messages = document.querySelector(".messages");
 
-send.addEventListener("click", (e) => {
+send.addEventListener("click", () => {
   if (text.value.length !== 0) {
     socket.emit("message", text.value);
+
+    messages.innerHTML = `<div class="message-blue">
+    <p class="message-content">${text.value}</p> </div>`;
     text.value = "";
   }
 });
@@ -87,10 +90,14 @@ text.addEventListener("keydown", (e) => {
     text.value = "";
   }
 });
-
+/* <div class="message-blue">
+        <p class="message-content">This is an awesome message!</p>
+       
+    </div> */
 const inviteButton = document.querySelector("#inviteButton");
 const muteButton = document.querySelector("#muteButton");
 const stopVideo = document.querySelector("#stopVideo");
+
 muteButton.addEventListener("click", () => {
   const enabled = myVideoStream.getAudioTracks()[0].enabled;
   if (enabled) {
