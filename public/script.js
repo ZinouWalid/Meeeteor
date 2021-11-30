@@ -75,11 +75,17 @@ let send = document.getElementById("send");
 let messages = document.querySelector(".messages");
 
 send.addEventListener("click", () => {
+  var d = new Date();
   if (text.value.length !== 0) {
-    socket.emit("message", text.value);
-
-    messages.innerHTML = `<div class="message-blue">
-    <p class="message-content">${text.value}</p> </div>`;
+    messages.innerHTML =
+      messages.innerHTML +
+      `<div class="message-blue">
+    <b><i class="far fa-user-circle"></i> <span> ${user}</span> </b>
+    <span class="message-content">${text.value}</span>
+    <div class="message-timestamp-left">${d.getHours()}:${
+        d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes()
+      }</div>
+</div>`;
     text.value = "";
   }
 });

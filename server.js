@@ -221,7 +221,12 @@ app.get("/logout", function (req, res) {
   res.redirect("/all-users");
 });
 
+app.post("/:id", checkAuthticated, (req, res) => {
+  res.render("room", { roomId: req.params.room });
+});
+
 app.get("/:id", checkAuthticated, (req, res) => {
+  console.log('ROOM_ID : ',req.params.id)
   res.render("room", { roomId: req.params.room });
 });
 
@@ -232,7 +237,7 @@ io.on("connection", (socket) => {
     socket.on("message", (message) => {
       io.to(roomId).emit("createMessage", message, userName);
     });
-  });text.value
+  });
 });
 
 const PORT = process.env.PORT || 3030;
