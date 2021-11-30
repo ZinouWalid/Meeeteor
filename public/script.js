@@ -32,9 +32,8 @@ messageForm.addEventListener("submit", (e) => {
 
 function appendMessage(message) {
   var d = new Date();
-  //const messageElement = document.createElement("div");
-  //messageElement.innerText = message;
-  console.log('message : ',message)
+
+  console.log("message : ", message);
   messages.innerHTML =
     messages.innerHTML +
     `<div class="message-blue">
@@ -67,7 +66,6 @@ showChat.addEventListener("click", () => {
   document.querySelector(".header__back").style.display = "block";
 });
 
-//const user = prompt("Enter your name");
 
 var peer = new Peer(undefined, {
   path: "/peerjs",
@@ -118,36 +116,6 @@ const addVideoStream = (video, stream) => {
   });
 };
 
-let text = document.querySelector("#chat_message");
-let send = document.getElementById("send");
-//let messages = document.querySelector(".messages");
-
-send.addEventListener("click", () => {
-  var d = new Date();
-  if (text.value.length !== 0) {
-    messages.innerHTML =
-      messages.innerHTML +
-      `<div class="message-blue">
-    <b><i class="far fa-user-circle"></i> <span> ${user}</span> </b>
-    <span class="message-content">${text.value}</span>
-    <div class="message-timestamp-left">${d.getHours()}:${
-        d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes()
-      }</div>
-</div>`;
-    text.value = "";
-  }
-});
-
-/*text.addEventListener("keydown", (e) => {
-  if (e.key === "Enter" && text.value.length !== 0) {
-    socket.emit("message", text.value);
-    text.value = "";
-  }
-});
-/* <div class="message-blue">
-        <p class="message-content">This is an awesome message!</p>
-       
-    </div> */
 const inviteButton = document.querySelector("#inviteButton");
 const muteButton = document.querySelector("#muteButton");
 const stopVideo = document.querySelector("#stopVideo");
@@ -188,14 +156,3 @@ inviteButton.addEventListener("click", (e) => {
     window.location.href
   );
 });
-
-/*socket.on("createMessage", (message, userName) => {
-  messages.innerHTML =
-    messages.innerHTML +
-    `<div class="message">
-        <b><i class="far fa-user-circle"></i> <span> ${
-          userName === user ? "me" : userName
-        }</span> </b>
-        <span>${message}</span>
-    </div>`;
-});*/

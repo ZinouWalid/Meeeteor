@@ -1,7 +1,9 @@
+require("dotenv").config();
+
 async function insertUser(doc) {
   const MongoClient = require("mongodb").MongoClient;
   // Replace the uri string with your MongoDB deployment's connection string.
- 
+
   const client = new MongoClient(process.env.MONGO_CONNECTION_URL);
   const Meeeteor = client.db("Meeeteor");
   const User = Meeeteor.collection("User");
@@ -23,8 +25,7 @@ async function insertUser(doc) {
 async function deleteUser(query) {
   const MongoClient = require("mongodb").MongoClient;
   // Replace the uri string with your MongoDB deployment's connection string.
-  const uri =
-    "mongodb+srv://zineddine_walid:mongodb1209@cluster0.o2k2b.mongodb.net/Meeeteor?retryWrites=true&w=majority";
+  const uri = process.env.MONGO_CONNECTION_URL;
 
   const client = new MongoClient(process.env.MONGO_CONNECTION_URL);
   const Meeeteor = client.db("Meeeteor");
@@ -50,7 +51,7 @@ async function deleteUser(query) {
 async function findUser(query) {
   const MongoClient = require("mongodb").MongoClient;
   // Replace the uri string with your MongoDB deployment's connection string.
-  
+
   const client = new MongoClient(process.env.MONGO_CONNECTION_URL);
   const Meeeteor = client.db("Meeeteor");
   const User = Meeeteor.collection("User");

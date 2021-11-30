@@ -150,6 +150,11 @@ body {
   justify-content: space-between;
   width: 240px;
 }
+
+.redBtn:hover {
+  background-color: rgb(212, 36, 71);
+  color: #eee;
+}
 .redBtn > span {
   font-size: 1.7rem;
 }
@@ -174,22 +179,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.slider > button {
-  border: none;
-  outline: none;
-  background-color: white;
-  margin: 0 20px;
-  font-weight: 900;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  padding: 5px;
-}
-.slider > button:hover {
-  background-color: #e1e1e1;
-  border-radius: 100%;
 }
 
 .slider > img {

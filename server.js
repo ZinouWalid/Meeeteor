@@ -24,10 +24,7 @@ const connectDB = require("./db/connect");
 const passport = require("passport");
 
 //Passport config
-//require("./config/passport") is a function
 require("./config/passport")(passport);
-
-//methode-override
 
 //User collection
 const User = require("./collections/User");
@@ -36,6 +33,7 @@ const bodyParser = require("body-parser");
 app.use("/peerjs", peerServer);
 app.use(express.static("public"));
 app.use(express.json());
+
 //to get the requests body
 app.use(express.urlencoded({ extended: false }));
 app.use(flash());
@@ -70,9 +68,6 @@ app.get("/sign-up", (req, res) => {
   res.render("Sign-up", { signUpId: req.params["Sign-up "] });
 });
 
-/*app.get("/new-meeting", checkAuthticated, (req, res) => {
-  res.render("NewMeet", { newMeetId: req.params.NewMeet });
-});*/
 
 //assiduite
 app.get("/all-users", checkNotAuthticated, async (req, res) => {
@@ -86,7 +81,7 @@ app.get("/all-users", checkNotAuthticated, async (req, res) => {
   const Users = Meeeteor.collection("users");
   const today = new Date().toLocaleDateString().toString();
   await Users.find(
-    { date: today /*, isTeacher: false*/ },
+    { date: today , isTeacher: false},
     {
       projection: {
         _id: 0,
@@ -211,6 +206,7 @@ app.post("/sign-in", (req, res, next) => {
     failureFlash: true, //display the messages that we provided before
   })(req, res, next);
 });
+
 //To clear and logout the session (use it with the quit button in room)
 app.get("/logout", function (req, res) {
   req.logOut();

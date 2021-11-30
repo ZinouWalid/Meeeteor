@@ -7,7 +7,6 @@
   --main-light: #eeeeee;
   --main-red: red;
   --main-blue: rgb(45, 96, 173);
-  /*<i class="fas fa-share-square"></i>*/
   font-family: "Poppins", sans-serif;
 }
 
@@ -271,8 +270,6 @@
   left: 28px;
   color: #fff;
 }
-/* .videos__group,
-.options */
 
 .main {
   border-right: 2px white solid;
@@ -296,9 +293,6 @@
   overflow-x: hidden;
   background: linear-gradient(to bottom, #282d32, #0c2b42eb, #043d69eb);
 }
-
-/*
-}*/
 
 .email,
 .submit {

@@ -6,24 +6,16 @@ const downloadLink = document.getElementById("download");
 const stopButton = document.getElementById("stop");
 function startRecord() {
   $(".btn-info").prop("disabled", true);
-  //$("#stop").prop("display", "none");
   $("#download").css("display", "none");
 }
 function stopRecord() {
   $(".btn-info").prop("disabled", false);
-  //$("#stop").prop("display", true);
   $("#download").css("display", "block");
 }
 
 const audioRecordConstraints = {
   echoCancellation: true,
 };
-
-/*recordButton.addEventListener("click", function () {
-  recordCard.classList.toggle('hideCard')
-}
-
-);*/
 
 stopButton.addEventListener("click", function () {
   shouldStop = true;
