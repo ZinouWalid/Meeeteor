@@ -2,11 +2,7 @@ const express = require("express");
 const app = express();
 const server = require("http").Server(app);
 app.set("view engine", "ejs");
-const io = require("socket.io")(server, {
-  cors: {
-    origin: "*",
-  },
-});
+const io = require('socket.io')(server);
 
 require("dotenv").config();
 
@@ -226,17 +222,27 @@ app.post("/:id", checkAuthticated, (req, res) => {
 });
 
 app.get("/:id", checkAuthticated, (req, res) => {
-  console.log('ROOM_ID : ',req.params.id)
+  console.log("ROOM_ID : ", req.params.id);
   res.render("room", { roomId: req.params.room });
 });
 
+const users = {};
+
 io.on("connection", (socket) => {
-  socket.on("join-room", (roomId, userId, userName) => {
-    socket.join(roomId);
-    socket.to(roomId).broadcast.emit("user-connected", userId);
-    socket.on("message", (message) => {
-      io.to(roomId).emit("createMessage", message, userName);
+  console.log("CONNECTED TO SOCKET");
+  socket.on("new-user", (user) => {
+    users[socket.id] = user;
+    socket.broadcast.emit("user-connected", user);
+  });
+  socket.on("send-chat-message", (message) => {
+    socket.broadcast.emit("chat-message", {
+      message: message,
+      name: users[socket.id],
     });
+  });
+  socket.on("disconnect", () => {
+    socket.broadcast.emit("user-disconnected", users[socket.id]);
+    delete users[socket.id];
   });
 });
 

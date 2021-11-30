@@ -122,7 +122,7 @@
   background: linear-gradient(to top, green, lightgreen);
 }
 
-.options__button > button {
+#send-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -134,6 +134,12 @@
   border-radius: 100%;
   border: none;
   outline: none;
+}
+
+#send-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #quitButton {
@@ -207,7 +213,7 @@
   align-items: center;
 }
 
-.main__message_container > input {
+#message-input {
   height: 50px;
   flex: 1;
   font-size: 1rem;

@@ -1,4 +1,52 @@
-const socket = io("/");
+//-------CHAT PART-------------------
+
+const socket = io("http://localhost:3030");
+const messageContainer = document.getElementById("message-container");
+const messageForm = document.getElementById("send-container");
+const messageInput = document.getElementById("message-input");
+let messages = document.querySelector(".messages");
+
+const user = prompt("What is your name?");
+appendMessage("You joined");
+socket.emit("new-user", user);
+
+socket.on("chat-message", (data) => {
+  appendMessage(`${data.name}: ${data.message}`);
+});
+
+socket.on("user-connected", (name) => {
+  appendMessage(`${user} connected`);
+});
+
+socket.on("user-disconnected", (name) => {
+  appendMessage(`${user} disconnected`);
+});
+
+messageForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const message = messageInput.value;
+  appendMessage(`You: ${message}`);
+  socket.emit("send-chat-message", message);
+  messageInput.value = "";
+});
+
+function appendMessage(message) {
+  var d = new Date();
+  //const messageElement = document.createElement("div");
+  //messageElement.innerText = message;
+  console.log('message : ',message)
+  messages.innerHTML =
+    messages.innerHTML +
+    `<div class="message-blue">
+<b><i class="far fa-user-circle"></i> <span> ${user}</span> </b>
+<span class="message-content">${message}</span>
+<div class="message-timestamp-left">${d.getHours()}:${
+      d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes()
+    }</div>
+</div>`;
+}
+
+//-----------------------------------
 const videoGrid = document.getElementById("video-grid");
 const myVideo = document.createElement("video");
 const showChat = document.querySelector("#showChat");
@@ -19,7 +67,7 @@ showChat.addEventListener("click", () => {
   document.querySelector(".header__back").style.display = "block";
 });
 
-const user = prompt("Enter your name");
+//const user = prompt("Enter your name");
 
 var peer = new Peer(undefined, {
   path: "/peerjs",
@@ -72,7 +120,7 @@ const addVideoStream = (video, stream) => {
 
 let text = document.querySelector("#chat_message");
 let send = document.getElementById("send");
-let messages = document.querySelector(".messages");
+//let messages = document.querySelector(".messages");
 
 send.addEventListener("click", () => {
   var d = new Date();
@@ -90,7 +138,7 @@ send.addEventListener("click", () => {
   }
 });
 
-text.addEventListener("keydown", (e) => {
+/*text.addEventListener("keydown", (e) => {
   if (e.key === "Enter" && text.value.length !== 0) {
     socket.emit("message", text.value);
     text.value = "";
@@ -141,7 +189,7 @@ inviteButton.addEventListener("click", (e) => {
   );
 });
 
-socket.on("createMessage", (message, userName) => {
+/*socket.on("createMessage", (message, userName) => {
   messages.innerHTML =
     messages.innerHTML +
     `<div class="message">
@@ -150,4 +198,4 @@ socket.on("createMessage", (message, userName) => {
         }</span> </b>
         <span>${message}</span>
     </div>`;
-});
+});*/
