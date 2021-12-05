@@ -110,10 +110,24 @@
     var(--main-dark)
   );
 }
-
-.blue_btn {
+ .options__button > button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(to top, blue, rgb(7, 170, 224));
-}
+
+  /* background-image: linear-gradient(to left , red , blue);   */
+   height: 50px;
+  color: var(--main-light);
+  font-size: 1rem;
+  width: 50px;
+  margin: 0 0.5rem;
+  border-radius: 100%;
+  border: none;
+  outline: none;
+} 
+
+
 .red_btn {
   background: linear-gradient(to top, red, crimson);
 }
