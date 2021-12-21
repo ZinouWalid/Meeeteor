@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const server = require("http").Server(app);
 app.set("view engine", "ejs");
-const io = require('socket.io')(server);
+const io = require("socket.io")(server);
 
 require("dotenv").config();
 
@@ -29,6 +29,8 @@ require("./config/passport")(passport);
 //User collection
 const User = require("./collections/User");
 const bodyParser = require("body-parser");
+const { insertMeeting } = require("./routes/meeting-functions");
+const Meeting = require("./collections/Meeting");
 
 app.use("/peerjs", peerServer);
 app.use(express.static("public"));
@@ -60,7 +62,6 @@ app.get("/", (req, res) => {
   res.render("HomePage", { homeId: req.params.HomePage });
 });
 
-
 app.get("/sign-in", checkNotAuthticated, (req, res) => {
   res.render("Sign-in", { signInId: req.params["Sign-in"] });
 });
@@ -69,11 +70,9 @@ app.get("/sign-up", (req, res) => {
   res.render("Sign-up", { signUpId: req.params["Sign-up "] });
 });
 
-
 //assiduite
 app.get("/all-users", checkNotAuthticated, async (req, res) => {
   const MongoClient = require("mongodb").MongoClient;
-  // Replace the uri string with your MongoDB deployment's connection string.
 
   const client = await new MongoClient(
     process.env.MONGO_CONNECTION_URL
@@ -82,7 +81,7 @@ app.get("/all-users", checkNotAuthticated, async (req, res) => {
   const Users = Meeeteor.collection("users");
   const today = new Date().toLocaleDateString().toString();
   await Users.find(
-    { date: today , isTeacher: false},
+    { meetings: { $in: [NEWMEETING] } },
     {
       projection: {
         _id: 0,
@@ -185,24 +184,40 @@ function checkNotAuthticated(req, res, next) {
 //---------- SIGN IN functionality ----------
 
 //check if user exists in MongoDB
+const NEWMEETING = `/meeeteor_${Math.random().toString(36).substr(2, 10)}`;
 app.post("/sign-in", (req, res, next) => {
   //Update the date of the loged in user
   var MongoClient = require("mongodb").MongoClient;
   MongoClient.connect(process.env.MONGO_CONNECTION_URL, function (err, db) {
     if (err) throw err;
     var dbo = db.db("Meeeteor");
-    var myquery = { email: req.body.email };
-    var newvalues = {
-      $set: { date: new Date().toLocaleDateString().toString() },
+
+    //The loged in user
+    var userQuery = { email: req.body.email };
+    var userNewvalues = {
+      $push: { meetings: NEWMEETING },
     };
-    dbo.collection("users").updateOne(myquery, newvalues, function (err, res) {
-      if (err) throw err;
-      console.log("1 document updated");
-      db.close();
-    });
+
+    //The new meeting
+    dbo
+      .collection("users")
+      .updateOne(userQuery, userNewvalues, function (err, res) {
+        if (err) throw err;
+        console.log("1 document updated");
+        db.close();
+      });
+
+    const newMeeting = new Meeting({ name: NEWMEETING });
+    newMeeting
+      .save()
+      .then((user) => {
+        req.flash("success_msg", "You are now registered and can log in");
+      })
+      .catch((err) => console.log(err));
   });
+
   passport.authenticate("local", {
-    successRedirect: `/meeeteor_${Math.random().toString(36).substr(2, 10)}`,
+    successRedirect: NEWMEETING,
     failureRedirect: "/sign-in",
     failureFlash: true, //display the messages that we provided before
   })(req, res, next);
