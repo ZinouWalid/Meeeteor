@@ -29,7 +29,6 @@ require("./config/passport")(passport);
 //User collection
 const User = require("./collections/User");
 const bodyParser = require("body-parser");
-const { insertMeeting } = require("./routes/meeting-functions");
 const Meeting = require("./collections/Meeting");
 
 app.use("/peerjs", peerServer);

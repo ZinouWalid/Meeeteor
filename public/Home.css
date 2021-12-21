@@ -147,7 +147,7 @@ body {
   background-color: crimson;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 240px;
 }
 
@@ -186,6 +186,13 @@ body {
   width: 250px;
   object-fit: contain;
   border-radius: 50%;
+}
+
+.homePage__bodyRight__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 768px) {
