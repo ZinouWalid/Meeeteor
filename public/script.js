@@ -1,6 +1,6 @@
 //-------CHAT PART-------------------
 
-const socket = io(`http://localhost:${process.env.PORT}`);
+const socket = io(`http://localhost:3030`);
 const messageContainer = document.getElementById("message-container");
 const messageForm = document.getElementById("send-container");
 const messageInput = document.getElementById("message-input");

@@ -82,7 +82,7 @@
 }
 
 .video {
-  max-height: 250px;
+  height: 80%;
   border-radius: 10px;
   margin: 0.5rem;
   max-width: 350px;
