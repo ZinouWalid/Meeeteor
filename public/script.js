@@ -8,10 +8,12 @@ myVideo.muted = true;
 
 const user = prompt("What is your name?");
 
+appendMessage("You joined");
+
 var peer = new Peer(undefined, {
   path: "/peerjs",
   host: "/",
-  port: "4000",
+  port: `3000`,
 });
 
 let myVideoStream;
@@ -44,8 +46,8 @@ navigator.mediaDevices
     });
 
     socket.on("user-disconnected", (userId) => {
-      alert(userId," Has left the meting.")
-      myVideo.remove()
+      alert(userId, " Has left the meting.");
+      myVideo.remove();
     });
 
     document.addEventListener("keydown", (e) => {
@@ -56,7 +58,6 @@ navigator.mediaDevices
     });
 
     socket.on("createMessage", (msg) => {
-      var d = new Date();
 
       console.log(msg);
 
@@ -133,54 +134,7 @@ const addVideoStream = (videoEl, stream) => {
     }
   }
 };
-/*
-(
-const playStop = () => {
-  let enabled = myVideoStream.getVideoTracks()[0].enabled;
-  if (enabled) {
-    myVideoStream.getVideoTracks()[0].enabled = false;
-    setPlayVideo();
-  } else {
-    setStopVideo();
-    myVideoStream.getVideoTracks()[0].enabled = true;
-  }
-};
 
-const muteUnmute = () => {
-  const enabled = myVideoStream.getAudioTracks()[0].enabled;
-  if (enabled) {
-    myVideoStream.getAudioTracks()[0].enabled = false;
-    setUnmuteButton();
-  } else {
-    setMuteButton();
-    myVideoStream.getAudioTracks()[0].enabled = true;
-  }
-};
-
-const setPlayVideo = () => {
-  const html = `<i class="unmute fa fa-pause-circle"></i>
-  <span class="unmute">Resume Video</span>`;
-  document.getElementById("playPauseVideo").innerHTML = html;
-};
-
-const setStopVideo = () => {
-  const html = `<i class=" fa fa-video-camera"></i>
-  <span class="">Pause Video</span>`;
-  document.getElementById("playPauseVideo").innerHTML = html;
-};
-
-const setUnmuteButton = () => {
-  const html = `<i class="unmute fa fa-microphone-slash"></i>
-  <span class="unmute">Unmute</span>`;
-  document.getElementById("muteButton").innerHTML = html;
-};
-const setMuteButton = () => {
-  const html = `<i class="fa fa-microphone"></i>
-  <span>Mute</span>`;
-  document.getElementById("muteButton").innerHTML = html;
-};
-
-)*/
 //----------------------------------------------
 
 const muteButton = document.querySelector("#muteButton");
