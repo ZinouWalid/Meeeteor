@@ -8,8 +8,6 @@ myVideo.muted = true;
 
 const user = prompt("What is your name?");
 
-appendMessage("You joined");
-
 var peer = new Peer(undefined, {
   path: "/peerjs",
   host: "/",
@@ -42,12 +40,12 @@ navigator.mediaDevices
     });
 
     socket.on("user-connected", (userId) => {
-      connectToNewUser(userId, stream);
+      connectToNewUser(userId, myVideoStream);
     });
 
-    socket.on("user-disconnected", (userId) => {
-      alert(userId, " Has left the meting.");
-      myVideo.remove();
+    socket.on("user-disconnected", (userID) => {
+      //myVideo.remove();
+      removeUser(userID, myVideoStream);
     });
 
     document.addEventListener("keydown", (e) => {
@@ -58,7 +56,6 @@ navigator.mediaDevices
     });
 
     socket.on("createMessage", (msg) => {
-
       console.log(msg);
 
       appendMessage(msg);
@@ -114,8 +111,12 @@ const connectToNewUser = (userId, streams) => {
     console.log(userVideoStream);
     addVideoStream(video, userVideoStream);
   });
-  call.on("close", (userVideoStream) => {
-    myVideo.remove();
+};
+
+const removeUser = (userId, streams) => {
+  var call = peer.call(userId, streams);
+  call.on("stream", (userVideoStream) => {
+    removeVideoStream(video, userVideoStream);
   });
 };
 
@@ -136,7 +137,7 @@ const addVideoStream = (videoEl, stream) => {
 };
 
 //----------------------------------------------
-
+const inviteButton = document.querySelector("#inviteButton");
 const muteButton = document.querySelector("#muteButton");
 const stopVideo = document.querySelector("#stopVideo");
 
@@ -169,4 +170,11 @@ stopVideo.addEventListener("click", () => {
     stopVideo.classList.toggle("red_btn");
     stopVideo.innerHTML = html;
   }
+});
+
+inviteButton.addEventListener("click", (e) => {
+  prompt(
+    "Copy this link and send it to people you want to meet with",
+    window.location.href
+  );
 });

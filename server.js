@@ -507,34 +507,19 @@ app.get("/:id", checkAuthticated, (req, res) => {
 });
 
 const users = {};
-/*
-io.on("connection", (socket) => {
-  console.log("CONNECTED TO SOCKET");
-  socket.on("new-user", (user) => {
-    users[socket.id] = user;
-    socket.broadcast.emit("user-connected", user);
-  });
-  socket.on("send-chat-message", (message) => {
-    socket.broadcast.emit("chat-message", {
-      message: message,
-      name: users[socket.id],
-    });
-  });
-  socket.on("disconnect", () => {
-    socket.broadcast.emit("user-disconnected", users[socket.id]);
-    delete users[socket.id];
-  });
-});*/
 
 io.on("connection", (socket) => {
   socket.on("join-room", (roomId, userId) => {
     socket.join(roomId);
     socket.broadcast.emit("user-connected", userId);
-    users[socket.id] = userId;
+    users[socket.id] = socket.id;
 
     socket.on("message", (message) => {
       //socket.broadcast.emit("createMessage", message);
       io.to(roomId).emit("createMessage", message);
+    });
+    socket.on("disconnect", function (userID) {
+      socket.broadcast.emit("user-disconnected", userID);
     });
   });
 });
