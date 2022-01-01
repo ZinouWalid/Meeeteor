@@ -4,9 +4,11 @@ const all_messages = document.getElementById("all_messages");
 const main__chat__window = document.getElementById("main__chat__window");
 const videoGrid = document.getElementById("video-grid");
 const myVideo = document.createElement("video");
+
 myVideo.muted = true;
 
 const user = prompt("What is your name?");
+socket.emit("new-user", user);
 
 var peer = new Peer(undefined, {
   path: "/peerjs",
@@ -43,9 +45,9 @@ navigator.mediaDevices
       connectToNewUser(userId, myVideoStream);
     });
 
-    socket.on("user-disconnected", (userID) => {
+    socket.on("user-disconnected", (name) => {
       //myVideo.remove();
-      removeUser(userID, myVideoStream);
+      appendMessage(`${name} disconnected`);
     });
 
     document.addEventListener("keydown", (e) => {
@@ -55,10 +57,10 @@ navigator.mediaDevices
       }
     });
 
-    socket.on("createMessage", (msg) => {
-      console.log(msg);
+    socket.on("createMessage", (data) => {
+      console.log(`${data.name}: ${data.message}`);
 
-      appendMessage(msg);
+      appendMessage(`${data.name}: ${data.message}`);
       main__chat__window.scrollTop = main__chat__window.scrollHeight;
     });
   });
@@ -79,6 +81,7 @@ function appendMessage(message) {
     }:${d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes()}</div>
 </div>`;
 }
+
 //---------------
 peer.on("call", function (call) {
   getUserMedia(
