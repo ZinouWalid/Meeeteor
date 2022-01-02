@@ -2,7 +2,7 @@ const videoElem = document.querySelector(".video");
 const logElem = document.getElementById("log");
 const startElem = document.querySelector(".start");
 const stopElem = document.querySelector(".stop_share");
-const videogrp = document.querySelector(".videos__group");
+const videogrp = document.querySelector(".main__videos");
 
 // Options for getDisplayMedia()
 
@@ -17,10 +17,12 @@ var displayMediaOptions = {
 startElem.addEventListener(
   "click",
   function (evt) {
-    videogrp.classList.remove("videos__group");
+    videogrp.classList.remove("main__videos");
     videogrp.classList.add("video_groupe_hidden");
+
     videoElem.classList.remove("video");
     videoElem.classList.add("videoshare_hidden");
+
     startElem.classList.remove("start");
     startElem.classList.add("start_after");
     stopElem.classList.remove("stop_share");
@@ -34,7 +36,7 @@ stopElem.addEventListener(
   "click",
   function (evt) {
     videogrp.classList.remove("video_groupe_hidden");
-    videogrp.classList.add("videos__group");
+    videogrp.classList.add("main__videos");
     videoElem.classList.remove("videoshare_hidden");
     videoElem.classList.add("video");
     startElem.classList.add("start");

@@ -47,6 +47,24 @@ video {
   max-width: 500px;
 }
 
+.video1{
+  height: 100%;
+  border-radius: 10px;
+  margin: 0rem;
+  object-fit: cover;
+  transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  display: block;
+  flex: 1;
+  object-fit: cover;
+  border: 5px solid #000;
+  max-width: 15000px;
+}
+
+
+
+
 .options {
   position: relative;
   padding: 1rem;
