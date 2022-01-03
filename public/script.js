@@ -116,13 +116,6 @@ const connectToNewUser = (userId, streams) => {
   });
 };
 
-const removeUser = (userId, streams) => {
-  var call = peer.call(userId, streams);
-  call.on("stream", (userVideoStream) => {
-    removeVideoStream(video, userVideoStream);
-  });
-};
-
 const addVideoStream = (videoEl, stream) => {
   videoEl.srcObject = stream;
   videoEl.addEventListener("loadedmetadata", () => {

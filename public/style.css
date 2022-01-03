@@ -23,13 +23,7 @@ body {
 
 .videos__group {
   flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 1rem;
-  background-color: var(--main-dark);
-  height: 90vh;
-  /* border-radius: 10px; */
 }
 
 video {
@@ -42,28 +36,38 @@ video {
   -moz-transform: rotateY(180deg);
   display: block;
   flex: 1;
-  object-fit: cover;
-  border: 5px solid #000;
-  max-width: 500px;
+  border: 2px solid #000;
+  max-width: 600px;
 }
 
-.video1{
+#video-grid {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow-y: auto;
+}
+
+.main__videos {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.video1 {
   height: 100%;
   border-radius: 10px;
   margin: 0rem;
-  object-fit: cover;
   transform: rotateY(0deg);
   -webkit-transform: rotateY(0deg);
   -moz-transform: rotateY(0deg);
-  display: block;
+  /* display: block; */
   flex: 1;
-  object-fit: cover;
+  object-fit: contain;
   border: 5px solid #000;
-  max-width: 15000px;
 }
-
-
-
 
 .options {
   position: relative;
@@ -209,15 +213,6 @@ video {
   color: #fff;
 }
 
-.main {
-  /* border-radius: 10px; */
-}
-.main__right,
-.main__left,
-.header {
-  /* border-radius: 10px; */
-}
-
 /**************************** NEWMEET STYLE ***********************************/
 
 @media (max-width: 700px) {
@@ -241,31 +236,6 @@ video {
 
 button:hover {
   cursor: pointer;
-}
-
-.material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px; /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: "liga";
 }
 
 .message-blue {
@@ -358,28 +328,19 @@ button:hover {
   margin: 0 0.5rem;
 }
 
-#video-grid {
-  display: flex;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  align-items: center;
-  flex-wrap: wrap;
-  overflow-y: auto;
-}
-
 .main {
   height: 90vh;
   display: flex;
 }
 .main__left {
+  background-color: var(--main-dark);
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   height: 90vh;
 }
 .main__right {
-  width: 23vw;
+  min-width: 23vw;
   display: flex;
   flex-direction: column;
   background-color: #043d69eb;
@@ -389,12 +350,6 @@ button:hover {
   display: none;
 }
 
-.main__videos {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .main__controls {
   display: flex;
   background-color: #1c1e20;

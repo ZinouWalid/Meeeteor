@@ -3,14 +3,12 @@
 }
 
 .videoshare_hidden {
-  border: 1px solid #999;
-  width: 100%;
-  height: 50%;
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 95% !important;
+  flex: 1;
   background-color: var(--main-dark);
+  margin: 0px auto;
+  border: none;
+  max-width: 1500px;
 }
 
 .video_groupe_hidden {

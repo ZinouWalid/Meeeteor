@@ -17,9 +17,10 @@ var displayMediaOptions = {
 startElem.addEventListener(
   "click",
   function (evt) {
-    videogrp.classList.remove("main__videos");
-    videogrp.classList.add("video_groupe_hidden");
-
+    console.log('3abezzzt')
+    //videogrp.classList.remove("main__videos");
+    //videogrp.classList.add("video_groupe_hidden");
+    videogrp.style.display = "none";
     videoElem.classList.remove("video");
     videoElem.classList.add("videoshare_hidden");
 
@@ -35,6 +36,9 @@ startElem.addEventListener(
 stopElem.addEventListener(
   "click",
   function (evt) {
+    console.log('3abezzzt')
+    videogrp.style.display = "block";
+
     videogrp.classList.remove("video_groupe_hidden");
     videogrp.classList.add("main__videos");
     videoElem.classList.remove("videoshare_hidden");
